@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <title>Political Revolution!</title>
+        <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        <script type="text/javascript" src="./assets/javascript/game.js"></script>
+    </head>
+
+<body>
+
+    <img src="https://www.placehold.it/720x240" alt="Title Image">
+
+    <h1>Press any key to get started!</h1>
+    <h2>Letters in your array: <span id="charArray"></span>.</h2>
+    <h2>Wrong choices: <span id="wrongChoices"></span></h2> 
+    <!-- I'll hook the above line up later -->
+    <h2>Number of Guesses Remaining: <span id="guessesLeft"></span></h2>
+      <!-- I'll hook the above line up later -->
+<script>
+
+
+var wordPossibilities = ["dog", "salmon", "greenland", "oceans", "revolution"]; //list of word options to play the game
+var wordUp = wordPossibilities[Math.floor(Math.random() * wordPossibilities.length)]; //selects at random from wordPossibilities
+var charArray = wordUp.split(""); //creates an array of characters from wordUp
+var charArrayHidden = wordUp.split("") // creates another array from wordUp, I will replace all characters in this one with "_"
+
+for (var i = 0; i < charArrayHidden.length; i++) {  // loops thru each character in the charArrayHidden
+    var charArrayHide = charArrayHidden[i] = "_"; // replaces each character with _. I don't know why, but dummy variable charArrayHide is necessary. charArrayHide = _.
+}
+
+var charArrayHiddenPrint = charArrayHidden.join(' '); //replaces commas in array with spaces. Is it still an array?
+
+console.log(charArray); // for test purposes
+console.log(charArrayHidden); //for test purposes
+
+//now, when they user pressed a button (event.key), search charArray for the letter the user chooses.
+//If found in charArray, replace the corresponding _ in charArrayHiddenPrint with the chosen letter
+//If not found in charArray, add it to the wrongChoices array
+
+
+var charArrayElement = document.getElementById("charArray"); //sets the span "charArray"to whatever the charArrayElement is
+charArrayElement.textContent = charArrayHiddenPrint.toString(); //displays charArrayHiddenPrint in span id charArray
+
+</script>
+
+</body>
+</html>
